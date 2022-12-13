@@ -1,0 +1,20 @@
+def deBruijn(s1, s2):
+  # Store the length of the first string
+  n = len(s1)
+  
+  # Create an empty graph
+  graph = {}
+  
+  # Loop through all substrings of length n in the second string
+  for i in range(len(s2) - n + 1):
+    substring = s2[i:i+n]
+    
+    # If the substring is not already a node in the graph, add it
+    if substring not in graph:
+      graph[substring] = []
+    
+    # Add an edge between the substring and the next n-1 characters of s2
+    graph[substring].append(s2[i+1:i+n+1])
+  
+  # Return the resulting graph
+  return graph
